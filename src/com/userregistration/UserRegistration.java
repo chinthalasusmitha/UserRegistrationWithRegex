@@ -11,7 +11,13 @@ public class UserRegistration {
         System.out.println("Welcome To User Registration");
         String firstName = "Pinky";
         boolean result = validName(firstName);
-        System.out.println("First name: " + result);
+        System.out.println("First name :  " + firstName + " ==> " + result);
+    }
+    private static void validLastName() {
+//        System.out.println("Welcome To User Registration");
+        String lastName = "Reddy";
+        boolean result = validName(lastName);
+        System.out.println("Last name: " + lastName + " ==> " +result);
     }
 
     private static boolean validName(String name) {
@@ -29,6 +35,7 @@ public class UserRegistration {
     public static void main(String[] args) {
         UserRegistration user = new UserRegistration();
         user.validFirstName();
+        user.validLastName();
     }
 
 
