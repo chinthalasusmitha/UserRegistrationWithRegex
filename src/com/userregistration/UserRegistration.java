@@ -9,14 +9,13 @@ public class UserRegistration {
         System.out.println("Welcome To User Registration");
         String firstName = "Pinky";
         boolean result = validName(firstName);
-        System.out.println("First name :  " + firstName + " ==> " + result);
+        System.out.println("\nFirst name :  " + firstName + " ==> " + result);
     }
 
     private static void validLastName() {
-//        System.out.println("Welcome To User Registration");
         String lastName = "Reddy";
         boolean result = validName(lastName);
-        System.out.println("Last name: " + lastName + " ==> " + result);
+        System.out.println("\nLast name: " + lastName + " ==> " + result);
     }
 
     private static boolean validName(String name) {
@@ -40,8 +39,20 @@ public class UserRegistration {
             Matcher matcher = pattern.matcher(email);
             result = matcher.matches();
         }
-        System.out.println("The email is: " + email + " ==> " + result);
+        System.out.println("\nThe email is: " + email + " ==> " + result);
 
+    }
+
+    private static void validPhoneNumber() {
+        boolean result = false;
+        String phoneNumber = "91 7995491772";
+        String regex = "[91]+() +[789][0-9]{9}";
+        Pattern pattern = Pattern.compile(regex);
+        for (int i = 0; i < phoneNumber.length(); i++) {
+            Matcher matcher = pattern.matcher(phoneNumber);
+            result = matcher.matches();
+        }
+        System.out.println("\nThe phone number is: " + phoneNumber + " ==> " + result);
     }
 
     public static void main(String[] args) {
@@ -49,6 +60,7 @@ public class UserRegistration {
         user.validFirstName();
         user.validLastName();
         user.validEmail();
+        user.validPhoneNumber();
     }
 
 
