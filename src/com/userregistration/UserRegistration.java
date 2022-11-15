@@ -5,6 +5,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserRegistration {
+    ArrayList<String> list = new ArrayList<>();
+
     private static void validFirstName() {
         System.out.println("Welcome To User Registration");
         String firstName = "Pinky";
@@ -45,8 +47,8 @@ public class UserRegistration {
 
     private static void validPhoneNumber() {
         boolean result = false;
-        String phoneNumber = "91 7995491772";
-        String regex = "[91]+() +[789][0-9]{9}";
+        String phoneNumber = "+91 7995491772";
+        String regex = "[+91]+() +[789][0-9]{9}";
         Pattern pattern = Pattern.compile(regex);
         for (int i = 0; i < phoneNumber.length(); i++) {
             Matcher matcher = pattern.matcher(phoneNumber);
@@ -55,12 +57,27 @@ public class UserRegistration {
         System.out.println("\nThe phone number is: " + phoneNumber + " ==> " + result);
     }
 
+    private static void validPassword() {
+//        UC-5 to UC-8 All were in this method Only
+        boolean result = false;
+        String password = "pInKy@123";
+        String regex = "(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}";
+        Pattern pattern = Pattern.compile(regex);
+        for (int i = 0; i < password.length(); i++) {
+            Matcher matcher = pattern.matcher(password);
+            result = matcher.matches();
+        }
+        System.out.println("\nThe password is: " + password + " ==> " + result);
+    }
+
+
     public static void main(String[] args) {
         UserRegistration user = new UserRegistration();
         user.validFirstName();
         user.validLastName();
         user.validEmail();
         user.validPhoneNumber();
+        user.validPassword();
     }
 
 
