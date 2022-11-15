@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserRegistration {
-    ArrayList<String> list = new ArrayList<>();
+    static ArrayList<String> list = new ArrayList<>();
 
     private static void validFirstName() {
         System.out.println("Welcome To User Registration");
@@ -33,16 +33,28 @@ public class UserRegistration {
     }
 
     private static void validEmail() {
-        boolean result = false;
-        String email = "pinky_123@gmail.com";
-        String regex = "^[a-z0-9+_.-]+@+[a-z]+.+[a-z]";// {3,} means above 3
-        Pattern pattern = Pattern.compile(regex);
-        for (int i = 0; i < email.length(); i++) {
-            Matcher matcher = pattern.matcher(email);
-            result = matcher.matches();
-        }
-        System.out.println("\nThe email is: " + email + " ==> " + result);
+        boolean result;
+        String email = "\npinky_123@gmail.com";
+        list.add("\nabc@yahoo.com");
+        list.add("\nabc-100@yahoo.com");
+        list.add("\nabc111@abc.com");
+        list.add("\nabc.100@yahoo.com");
+        list.add("\nabc-100@abc.net");
+        list.add("\nabc.100@abc.com.au");
+        list.add("\nabc@1.com");
+        list.add("\nabc@gmail.com.com");
+        list.add("\nabc+100@gmail.com");
 
+        String regex="[a-z0-9+_.-]+@+[a-z]+.+[a-z]";
+        Pattern pattern=Pattern.compile(regex);
+        for(int i=3;i<list.size();i++){
+            Matcher matcher=pattern.matcher(list.get(i));
+            result=matcher.matches();
+            System.out.println("\nThe email is: "+list.get(i)+ " ==> " +result);
+        }
+        for(int i=list.size()-1;i>1;i--){
+            list.remove(i);
+        }
     }
 
     private static void validPhoneNumber() {
@@ -70,6 +82,10 @@ public class UserRegistration {
         System.out.println("\nThe password is: " + password + " ==> " + result);
     }
 
+    private static void removingAddedMailId() {
+        System.out.println("removing email : ");
+        System.out.println("list after removing the added mail id : " + list);
+    }
 
     public static void main(String[] args) {
         UserRegistration user = new UserRegistration();
@@ -78,6 +94,7 @@ public class UserRegistration {
         user.validEmail();
         user.validPhoneNumber();
         user.validPassword();
+        removingAddedMailId();
     }
 
 
