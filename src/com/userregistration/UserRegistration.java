@@ -34,29 +34,28 @@ public class UserRegistration {
 
     private static void validEmail() {
         boolean result;
-        String email = "\npinky_123@gmail.com";
-        list.add("\nabc@yahoo.com");
-        list.add("\nabc-100@yahoo.com");
-        list.add("\nabc111@abc.com");
-        list.add("\nabc.100@yahoo.com");
-        list.add("\nabc-100@abc.net");
-        list.add("\nabc.100@abc.com.au");
-        list.add("\nabc@1.com");
-        list.add("\nabc@gmail.com.com");
-        list.add("\nabc+100@gmail.com");
 
-        String regex="[a-z0-9+_.-]+@+[a-z]+.+[a-z]";
-        Pattern pattern=Pattern.compile(regex);
-        for(int i=3;i<list.size();i++){
-            Matcher matcher=pattern.matcher(list.get(i));
-            result=matcher.matches();
-            System.out.println("\nThe email is: "+list.get(i)+ " ==> " +result);
+        list.add("abc@yahoo.com");
+        list.add("abc-100@yahoo.com");
+        list.add("abc111@abc.com");
+        list.add("abc.100@yahoo.com");
+        list.add("abc-100@abc.net");
+        list.add("abc.100@abc.com.au");
+        list.add("abc@1.com");
+        list.add("abc@gmail.com.com");
+        list.add("abc+100@gmail.com");
+
+        String regex = "^[a-z0-9+_.-]+@+[a-z]+.+[a-z]";
+        Pattern pattern = Pattern.compile(regex);
+        for (int i = 3; i < list.size(); i++) {
+            Matcher matcher = pattern.matcher(list.get(i));
+            result = matcher.matches();
+            System.out.println("The email " + list.get(i) + " is  ==> " + result);
         }
-        for(int i=list.size()-1;i>1;i--){
+        for (int i = list.size() - 1; i > 1; i--) {
             list.remove(i);
         }
     }
-
     private static void validPhoneNumber() {
         boolean result = false;
         String phoneNumber = "+91 7995491772";
@@ -73,7 +72,7 @@ public class UserRegistration {
 //        UC-5 to UC-8 All were in this method Only
         boolean result = false;
         String password = "pInKy@123";
-        String regex = "(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}";
+        String regex = "(^?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}";
         Pattern pattern = Pattern.compile(regex);
         for (int i = 0; i < password.length(); i++) {
             Matcher matcher = pattern.matcher(password);
@@ -83,7 +82,7 @@ public class UserRegistration {
     }
 
     private static void removingAddedMailId() {
-        System.out.println("removing email : ");
+        System.out.println(" After removing email : ");
         System.out.println("list after removing the added mail id : " + list);
     }
 
